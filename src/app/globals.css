@@ -1,14 +1,17 @@
+@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #ED5E4A;
-}
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --primary: #ED5E4A;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
 }
