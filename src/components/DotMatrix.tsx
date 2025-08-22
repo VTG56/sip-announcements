@@ -77,6 +77,7 @@ const DotMatrix: React.FC<DotMatrixProps> = ({ dotColor = 'rgba(237, 94, 74, 0.5
     }
 
     function init() {
+      if (!canvas) return
       particles = []
       const gap = 20
       for (let y = 0; y < canvas.height; y += gap) {
@@ -88,7 +89,7 @@ const DotMatrix: React.FC<DotMatrixProps> = ({ dotColor = 'rgba(237, 94, 74, 0.5
 
     let animationFrameId: number
     function animate() {
-      if (ctx) {
+      if (ctx && canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         for (let i = 0; i < particles.length; i++) {
           particles[i].update()

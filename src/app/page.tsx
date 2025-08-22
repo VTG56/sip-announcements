@@ -1,7 +1,11 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { FileText, Book, Users, Building, Star, Download, ArrowRight, Menu, X } from 'lucide-react'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FileText, Book, Users, Building, Star, Download, ArrowRight, Menu, X } from 'lucide-react';
+import HeroSection from '@/components/HeroSection';
+import DisclaimerModal from '@/components/DisclaimerModal';
 
 const announcements = [
   {
@@ -52,60 +56,49 @@ const iconMap: { [key: string]: React.ReactNode } = {
 }
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="py-4 px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-lg sticky top-0 z-30 border-b border-gray-200/80">
+    <header className="py-4 px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200/80">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="bg-primary p-2 rounded-lg">
-            <Star className="text-white" />
-          </div>
-          <h1 className="text-xl font-bold text-gray-800">SIP Announcements</h1>
-        </div>
+        <Link href="/" className="flex items-center gap-2 group">
+          <Image 
+            src="/RVCE Corner Logo BLACK-2 line.png"
+            alt="RVCE Corner Logo"
+            width={180}
+            height={50}
+            priority
+          />
+        </Link>
+        
         <nav className="hidden md:flex items-center gap-6 text-gray-600 font-medium">
-          <a href="#" className="hover:text-primary transition-colors">Home</a>
-          <a href="#announcements" className="hover:text-primary transition-colors">Announcements</a>
-          <a href="#" className="hover:text-primary transition-colors">About</a>
-          <a href="#" className="hover:text-primary transition-colors">Contact</a>
+          <Link href="#" className="hover:text-primary transition-colors">Home</Link>
+          <Link href="#announcements" className="hover:text-primary transition-colors">Announcements</Link>
         </nav>
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700">
-            {isOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+        
+        <button 
+          onClick={() => setIsOpen(!isOpen)} 
+          className="md:hidden text-gray-700 hover:text-primary transition-colors p-2"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
+      
       {isOpen && (
-        <div className="md:hidden mt-4">
-          <nav className="flex flex-col items-center gap-4 text-gray-600 font-medium">
-            <a href="#" className="hover:text-primary transition-colors">Home</a>
-            <a href="#announcements" className="hover:text-primary transition-colors">Announcements</a>
-            <a href="#" className="hover:text-primary transition-colors">About</a>
-            <a href="#" className="hover:text-primary transition-colors">Contact</a>
+        <div className="md:hidden mt-4 animate-fade-in">
+          <nav className="flex flex-col items-center gap-4 text-gray-600 font-medium py-4">
+            <Link href="#" className="hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Home</Link>
+            <Link href="#announcements" className="hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Announcements</Link>
           </nav>
         </div>
       )}
     </header>
-  )
-}
+  );
+};
 
-const HeroSection = () => (
-  <section className="py-24 sm:py-40 text-center bg-gray-50">
-    <div className="container mx-auto px-4">
-      <h2 className="text-5xl sm:text-7xl font-black text-gray-900 leading-tight tracking-tighter">
-        <span className="text-primary">SIP</span> Announcements
-      </h2>
-      <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
-        Your central hub for all official announcements and updates for the Student Induction Programme 2025. Never miss an important update again.
-      </p>
-      <div className="mt-10">
-        <a href="#announcements" className="bg-primary text-white font-bold py-4 px-8 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary/40">
-          View Announcements
-        </a>
-      </div>
-    </div>
-  </section>
-)
+
 
 const AnnouncementCard = ({ announcement }: { announcement: typeof announcements[0] }) => (
   <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 ease-in-out transform hover:-translate-y-2 overflow-hidden group">
@@ -147,8 +140,8 @@ const Announcements = () => (
   <section id="announcements" className="py-20 sm:py-32 bg-white">
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-900">Latest Announcements</h2>
-        <p className="text-lg text-gray-600 mt-2">Stay up-to-date with the latest news and updates.</p>
+        <h2 className="text-4xl font-bold text-gray-900">Student Induction Programme 2025</h2>
+        <p className="text-lg text-gray-600 mt-2">Stay up-to-date with the latest updates.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {announcements.map((announcement) => (
@@ -162,15 +155,30 @@ const Announcements = () => (
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-12">
     <div className="container mx-auto px-4 text-center">
-      <p>&copy; 2025 Student Induction Programme. All Rights Reserved.</p>
-      <p className="mt-2 text-gray-400">Designed & Developed with ❤️</p>
+      <p>&copy; 2025 RVCE, Bengaluru. All Rights Reserved.</p>
+      <p className="mt-2 text-gray-400">Student Induction Programme (SIP) Announcements</p>
     </div>
   </footer>
 )
 
 export default function Home() {
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+
+  useEffect(() => {
+    const disclaimerShown = sessionStorage.getItem('disclaimerShown');
+    if (!disclaimerShown) {
+      setShowDisclaimer(true);
+    }
+  }, []);
+
+  const handleDisclaimerClose = () => {
+    sessionStorage.setItem('disclaimerShown', 'true');
+    setShowDisclaimer(false);
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
+      {showDisclaimer && <DisclaimerModal onClose={handleDisclaimerClose} />}
       <Header />
       <HeroSection />
       <Announcements />
