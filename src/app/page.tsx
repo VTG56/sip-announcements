@@ -9,44 +9,33 @@ import DisclaimerModal from '@/components/DisclaimerModal';
 
 const announcements = [
   {
-    title: "Poster-testing", 
-    date: "22 Aug 2025",
-    driveShare: "https://drive.google.com/file/d/1PT6Pm8bVXpHwVeCKJ5ltbUXkGwA3j6Kf/view?usp=sharing",
-    type: "poster"
+    title: "SIP Schedule",
+    date: "21 Aug 2025",
+    driveShare: "#",
+    type: "schedule"
   },
   {
-    title: "Circulars",
-    date: "21 Aug 2025",
-    driveShare: "https://drive.google.com/file/d/1AbcDEF234567890fakeId1/view?usp=sharing",
-    type: "circulars"
+    title: "Club Showcasing Day Brochure",
+    date: "22 Aug 2025",
+    driveShare: "https://drive.google.com/file/d/1-GYb2sQ1c5HdRljaRpXLgYzJwMfaoFh_/view?usp=sharing",
+    type: "clubs"
   },
   {
     title: "Bootkit",
     date: "20 Aug 2025", 
-    driveShare: "https://drive.google.com/file/d/1XyzGHI234567890fakeId2/view?usp=sharing",
+    driveShare: "https://github.com/codingclubrvce/RVCE-Coding-Bootkit",
     type: "bootkit"
   },
   {
     title: "Counselor Details",
     date: "19 Aug 2025",
-    driveShare: "https://drive.google.com/open?id=1QwePQR234567890fakeId3",
+    driveShare: "https://drive.google.com/file/d/1bCdyhgxVHRz7ZXdmSe37NzcWo2MEnmCl/view?usp=sharing",
     type: "counselors"
-  },
-  {
-    title: "Venues",
-    date: "18 Aug 2025",
-    driveShare: "https://drive.google.com/file/d/1MnoSTU234567890fakeId4/view?usp=sharing",
-    type: "venues"
-  },
-  {
-    title: "Club Showcasing", 
-    date: "17 Aug 2025",
-    driveShare: "https://drive.google.com/uc?id=1VwxYZA234567890fakeId5&export=download",
-    type: "clubs"
   }
 ];
 
 const iconMap: { [key: string]: React.ReactNode } = {
+  schedule: <FileText className="w-8 h-8 text-primary" />,
   poster: <FileText className="w-8 h-8 text-primary" />,
   circulars: <FileText className="w-8 h-8 text-primary" />,
   bootkit: <Book className="w-8 h-8 text-primary" />,
@@ -119,16 +108,7 @@ const AnnouncementCard = ({ announcement }: { announcement: typeof announcements
           rel="noopener noreferrer"
           className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5"
         >
-          <Download className="w-5 h-5 mr-2" />
-          Download
-        </a>
-        <a
-          href={announcement.driveShare}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors duration-300"
-        >
-          View Online
+          {announcement.type === 'bootkit' ? 'View Online' : 'View'}
           <ArrowRight className="w-5 h-5 ml-2" />
         </a>
       </div>

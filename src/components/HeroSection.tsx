@@ -24,6 +24,13 @@ const HeroSection: React.FC = () => {
           >
             View Announcements
           </Button>
+          <Button 
+            size="large" 
+            variant="secondary"
+            href="#"
+          >
+            SIP Schedule
+          </Button>
         </div>
       </div>
     </section>

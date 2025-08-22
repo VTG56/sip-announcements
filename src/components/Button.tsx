@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 type ButtonVariant = 'primary' | 'secondary';
 type ButtonSize = 'small' | 'medium' | 'large';
@@ -9,6 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   children: React.ReactNode;
+  href?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   size = 'medium',
   children,
   className = '',
+  href,
   ...props
 }) => {
   const baseStyles = 'font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors';
@@ -31,9 +34,19 @@ const Button: React.FC<ButtonProps> = ({
     large: 'px-6 py-3 text-lg',
   };
 
+  const buttonClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={buttonClassName} {...props}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      className={buttonClassName}
       {...props}
     >
       {children}
