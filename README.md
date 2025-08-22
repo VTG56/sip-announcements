@@ -1,96 +1,36 @@
-# 📢 Student Announcements Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This is a **static website** hosted on (https://vercel.com).
-It displays important student announcements (circulars, boot kit, counsellor details, venues, club showcasing, etc.) as clickable links that redirect or download files from Google Drive.
+## Getting Started
 
----
+First, run the development server:
 
-## 🚀 How it Works
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-* All announcements are stored inside **`data.js`** in an array called `ANNOUNCEMENTS`.
-* When you update the array and push changes to GitHub, vercel.com **automatically redeploys** the site with the new announcements.
-* No database is needed. Everything is **hardcoded + version controlled**.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 🛠️ Steps to Modify Announcements
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-1. **Clone the Repository**
+## Learn More
 
-   ```bash
-   git clone <repo-link>
-   cd <repo-name>
-   ```
+To learn more about Next.js, take a look at the following resources:
 
-2. **Open the `data.js` File**
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-   * The file looks like this:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-     ```javascript
-     const ANNOUNCEMENTS = [
-       {
-         title: "Circular - Exam Timetable",
-         link: "https://drive.google.com/file/d/xyz/view?usp=sharing"
-       },
-       {
-         title: "Bootkit Workshop",
-         link: "https://drive.google.com/file/d/abc/view?usp=sharing"
-       }
-     ];
-     ```
-   * Each announcement is an **object** with:
+## Deploy on Vercel
 
-     * `title` → the display name
-     * `link` → Google Drive file link
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-3. **Add / Edit Announcements**
-
-   * To add a new one, just append to the array:
-
-     ```javascript
-     {
-       title: "New Event: Tech Fest",
-       link: "https://drive.google.com/file/d/123/view?usp=sharing"
-     }
-     ```
-
-4. **Commit & Push**
-
-   ```bash
-   git add .
-   git commit -m "Updated announcements"
-   git push origin main
-   ```
-
-5. **Auto Deployment**
-
-   * Once pushed, vercel.com will auto-redeploy.
-   * Within a few seconds, the live site updates with the new announcements.
-
----
-
-## 🧑‍💻 Notes
-
-* Ensure every Google Drive link has **“Anyone with link can view”** enabled.
-* Don’t remove the `const ANNOUNCEMENTS = [...]` format, otherwise the site will break.
-* Best practice: Always test the link before pushing.
-
----
-
-## 📦 Tech Stack
-
-* HTML, CSS, JavaScript
-* Hosted on https://vercel.com (Static Deployment)
-* Google Drive links as source files
-
----
-
-## 🔧 Quick Fix if Deployment Fails
-
-* Run `git pull` before editing (to avoid conflicts).
-* Ensure `vercel.json` is present at the root.
-* If `data.js` has a missing `,` or `}`, deployment will fail — double check.
-
----
-
-✍️ Maintainer: VTG56
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
